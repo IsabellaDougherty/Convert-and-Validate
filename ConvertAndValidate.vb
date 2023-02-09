@@ -19,6 +19,7 @@ Module ConvertAndValidate
             Console.WriteLine($"Enter a number:")
             usernResponse = Console.ReadLine()
             If ConversionValid(usernResponse, aValidNumber) = True Then
+                aValidNumber = CInt(usernResponse)
                 Console.WriteLine($"{usernResponse} converted successfully to {aValidNumber}!")
             Else
                 Console.WriteLine($"Oops, {usernResponse} does not seem to be a number")
@@ -32,12 +33,12 @@ Module ConvertAndValidate
 
     Function ConversionValid(convertThisString, toThisInteger) As Boolean
 
-        Dim status As Boolean
+        Dim status As Boolean = True
 
         Try
-
+            toThisInteger = CInt(convertThisString)
         Catch ex As Exception
-
+            status = False
         End Try
 
         Return status
